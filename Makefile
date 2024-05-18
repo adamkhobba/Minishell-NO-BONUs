@@ -6,32 +6,30 @@
 #    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/05/18 08:25:50 by akhobba          ###   ########.fr        #
+#    Updated: 2024/05/18 08:44:30 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc 
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+SRC = main.c
+OBJ = ${SRC:.c=.o}
+NAME = minishell
 
-CFLAGS =  -Wall -Wextra -Werror
+.PHONY: all libft clean fclean re
 
-SRC = main.c 
+all: ${NAME}
 
-OBJ = ${SRC.c:.o}
+${NAME}: ${OBJ} libft/libft.a
+	${CC} ${CFLAGS} -o ${NAME} ${OBJ} -lreadline libft/libft.a
 
-NAME = minishell 
-
-all : libft ${NAME}
-
-${NAME} : ${OBJ}
-	${CC} ${CFLAGS} -o ${NAME} ${OBJ} -Llibft
-
-libft :
+libft/libft.a:
 	make -C libft
 
-clean :
+clean:
 	rm -rf ${OBJ}
-	rm -rf ${NAME}
-	
-fclean : clean
 
-re : fclean all
+fclean: clean
+	rm -rf ${NAME}
+
+re: fclean all

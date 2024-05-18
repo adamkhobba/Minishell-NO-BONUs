@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/18 06:24:06 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/05/18 08:34:57 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ typedef struct s_command
     struct s_command *next;
 } t_command;
 
-typedef struct s_list
+typedef struct s_link
 {
     struct s_command *command;
     struct s_list *next;
-}t_list;
+}t_link;
 
 /*Parsing*/
 
