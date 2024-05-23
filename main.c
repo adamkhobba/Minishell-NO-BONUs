@@ -3,32 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/18 06:25:58 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/05/20 18:54:23 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
 
 int main() {
-    char *userInput;
+    char *input;
 
     while (1)
     {
-        userInput = readline("minishell>");
-        if (userInput == NULL) {
+        input = readline("minishell>");
+        if (input == NULL) {
          printf("\nError reading input. Exiting...\n");
             exit(EXIT_FAILURE);
         }
-        if (ft_strncmp(userInput, "exit", 4) == 0)
+        if (ft_strncmp(input, "exit", 4) == 0)
         {
-            free(userInput);
+            free(input);
             break;
         }
-        printf("You entered: %s\n", userInput);
-        free(userInput);
+        ft_lexer(input);
+        printf("You entered: %s\n", input);
+        free(input);
     }
     return 0;
 }

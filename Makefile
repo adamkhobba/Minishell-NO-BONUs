@@ -3,33 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
+#    By: adam <adam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/05/18 08:44:30 by akhobba          ###   ########.fr        #
+#    Updated: 2024/05/20 18:52:45 by adam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+
 SRC = main.c
 OBJ = ${SRC:.c=.o}
+
 NAME = minishell
 
-.PHONY: all libft clean fclean re
+all: libft\libft.a ${NAME}
 
-all: ${NAME}
-
-${NAME}: ${OBJ} libft/libft.a
+${NAME}: ${OBJ}
 	${CC} ${CFLAGS} -o ${NAME} ${OBJ} -lreadline libft/libft.a
 
-libft/libft.a:
+libft\libft.a:
 	make -C libft
 
 clean:
-	rm -rf ${OBJ}
+	rm -f ${OBJ}
 
 fclean: clean
-	rm -rf ${NAME}
+	rm -f ${NAME}
 
 re: fclean all
