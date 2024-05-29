@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/20 18:54:23 by adam             ###   ########.fr       */
+/*   Updated: 2024/05/24 17:14:01 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int main() {
             free(input);
             break;
         }
-        ft_lexer(input);
-        printf("You entered: %s\n", input);
+        ft_parser(input);
         free(input);
     }
     return 0;

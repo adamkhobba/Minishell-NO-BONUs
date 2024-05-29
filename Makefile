@@ -3,28 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adam <adam@student.42.fr>                  +#+  +:+       +#+         #
+#    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/05/20 18:52:45 by adam             ###   ########.fr        #
+#    Updated: 2024/05/29 09:39:27 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c
+SRC = main.c  parsing/lexer.c parsing/def_type.c parsing/parser.c\
+		utils/ft_split.c utils/small_ft.c utils/ft_lstadd_front_bonus.c\
+		utils/ft_atoi.c utils/ft_strcmp.c utils/ft_lstadd_back_bonus.c\
+		utils/ft_lstnew_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstlast_bonus.c\
+		utils/ft_lstsize_bonus.c utils/ft_strdup.c\
+		utils/ft_lstclear_bonus.c utils/ft_putstr.c\
+
 OBJ = ${SRC:.c=.o}
 
 NAME = minishell
 
-all: libft\libft.a ${NAME}
+all: ${NAME}
 
 ${NAME}: ${OBJ}
-	${CC} ${CFLAGS} -o ${NAME} ${OBJ} -lreadline libft/libft.a
-
-libft\libft.a:
-	make -C libft
+	${CC} ${CFLAGS} -o ${NAME} ${OBJ} -lreadline 
 
 clean:
 	rm -f ${OBJ}

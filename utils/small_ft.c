@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_ft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:16:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/20 20:12:46 by adam             ###   ########.fr       */
+/*   Updated: 2024/05/24 10:52:08 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,6 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
-}
-
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
@@ -62,7 +48,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (l);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	l1;
 	size_t	l2;
