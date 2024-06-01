@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/05/29 09:39:27 by akhobba          ###   ########.fr        #
+#    Updated: 2024/05/29 15:32:45 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c  parsing/lexer.c parsing/def_type.c parsing/parser.c\
+		parsing/checker.c\
 		utils/ft_split.c utils/small_ft.c utils/ft_lstadd_front_bonus.c\
 		utils/ft_atoi.c utils/ft_strcmp.c utils/ft_lstadd_back_bonus.c\
 		utils/ft_lstnew_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstlast_bonus.c\

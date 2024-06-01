@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/29 09:38:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/05/30 19:37:04 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 #ifndef MINISHELL
@@ -29,20 +30,20 @@ typedef enum e_type
     PIPE
 } t_type;
 
-
 typedef struct s_command
 {
     char *command;
     char **args;
     char *input;
     char *output;
-    struct s_link *next;
+    struct s_command *next;
 }t_command;
 
 typedef struct s_link
 {
     char *command;
     t_type identifer;
+    struct s_link *prev;
     struct s_link *next;
 }t_link;
 
@@ -52,8 +53,9 @@ typedef struct s_link
 
 //src
 char	**ft_lexer(char *input);
-void ft_parser(char *input);
+int ft_parser(char *input);
 t_link *ft_def_type(char **input);
+int ft_check_command(t_link *link);
 
 //utils
 char				**ft_split(char *str, char c);

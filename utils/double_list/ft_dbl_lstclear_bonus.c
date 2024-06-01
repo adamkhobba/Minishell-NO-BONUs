@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/30 19:36:17 by adam             ###   ########.fr       */
+/*   Created: 2023/11/19 18:22:35 by akhobba           #+#    #+#             */
+/*   Updated: 2024/05/20 21:16:05 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-
-
-int ft_parser(char *input)
+void	ft_lstclear(t_link **lst)
 {
-    char **split_input;
-    t_link *link;
+	t_link	*current;
+	t_link	*twp;
 
-    split_input = ft_lexer(input);
-
-    link = ft_def_type(split_input);
-    free(split_input);
-    // if (!ft_ch)
-    if (!ft_check_command(link))
-        return (0); 
-    return (1);
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		twp = current;
+		current = current->next;
+		ft_lstdelone(twp);
+	}
+	*lst = NULL;
 }
