@@ -6,7 +6,7 @@
 /*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/30 19:37:04 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/01 10:06:54 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ typedef struct s_link
 char	**ft_lexer(char *input);
 int ft_parser(char *input);
 t_link *ft_def_type(char **input);
-int ft_check_command(t_link *link);
+t_command *ft_check_command(t_link *link);
 
 //utils
+void                ft_free(char **str);
 char				**ft_split(char *str, char c);
 void				ft_putstr(char *s, int fd);
 int					ft_isdigit(int c);

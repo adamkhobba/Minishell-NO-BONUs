@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 14:41:57 by akhobba           #+#    #+#             */
-/*   Updated: 2023/11/10 18:30:19 by akhobba          ###   ########.fr       */
+/*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
+/*   Updated: 2024/06/01 10:05:43 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "../include/minishell.h"
+
+void ft_free(char **str)
 {
-	if (c >= 0 && c < 128)
-		return (1);
-	else
-		return (0);
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
 }

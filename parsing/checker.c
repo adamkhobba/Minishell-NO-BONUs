@@ -6,7 +6,7 @@
 /*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/30 16:26:23 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/01 10:08:04 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 char *ft_check_command_path(char *command)
 {
      char *path;
-     char *split_path;
+     char **split_path;
      char *join_path;
      char *join_path1;
      int i;
 
      i = 0;
      path = getenv("PATH");
-     split_path = ft_split(path, ":");
+     split_path = ft_split(path, ':');
      while (split_path[i])
      {
           join_path = ft_strjoin(split_path[i], "/");
@@ -83,8 +83,8 @@ t_command *ft_check_command(t_link *link)
           }
           if (!tmp)
                return (NULL);
-          command = ft_check_type(&tmp->command);
-          if (!command)
+          command->command = ft_check_type(tmp->command);
+          if (!command->command)
           {
                ft_putstr("minishell: command not found: ", 2);
                ft_putstr(tmp->command, 2);
