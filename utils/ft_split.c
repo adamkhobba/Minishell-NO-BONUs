@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:17:34 by adam              #+#    #+#             */
-/*   Updated: 2024/06/02 08:38:02 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/02 18:50:37 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,92 +37,90 @@ int	check_quote(char *str, int a)
 	return (0);
 }
 
-static size_t	ft_count_word(char *s, char c)
+static int	is_separator(char c, char *charset)
 {
-	size_t	check;
-	size_t	ken;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	ken = 0;
-	while (s[i])
+	while (charset[i])
 	{
-		check = 0;
-		while (s[i] && s[i] == c && !check_quote(s, i))
-			i++;
-		while (s[i] && (s[i] != c || (s[i] == c && check_quote(s, i))))
-		{
-			if (check == 0)
-			{
-				ken++;
-				check = 1;
-			}
-			i++;
-		}
+		if (c == charset[i])
+			return (1);
+		i++;
 	}
-	return (ken);
+	return (0);
 }
 
-static int	ft_put_malloc(char **arr, int index, size_t len)
+static int	count_words(char *str, char *charset)
 {
-	size_t	p;
+	int	i;
+	int	count;
 
-	p = index;
-	arr[index] = (char *)malloc(len);
-	if (NULL == arr)
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		while (p > 0)
-		{
-			free(arr[p]);
-			p--;
-		}
-		free(arr);
-		return (0);
+		while (str[i] && is_separator(str[i], charset))
+			i++;
+		if (str[i])
+			count++;
+		while (str[i] && !is_separator(str[i], charset))
+			i++;
 	}
-	return (1);
+	return (count);
 }
 
-static int	ft_rspl(char **arr, char *s, char c, int size)
+static	int	char_sep(char *str, char *charset)
 {
-	size_t	len;
-	int	index;
+	int	i;
+
+	i = 0;
+	while (str[i] && !is_separator(str[i], charset))
+		i++;
+	return (i);
+}
+
+static char	*ft_words(char *str, char *charset)
+{
+	int		len;
 	int		i;
+	char	*word;
 
+	len = char_sep(str, charset);
 	i = 0;
-	index = 0;
-	while (index < size)
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
 	{
-		len = 0;
-		while (s[i] && s[i] == c && !check_quote(s, i))
-			i++;
-		while (s[i] && (s[i] != c || (s[i] == c && check_quote(s, i))))
-		{
-			len++;
-			i++;
-		}
-		if (len)
-		{
-			if (!ft_put_malloc(arr, index, len + 1))
-				return (0);
-		}
-		ft_strlcpy(arr[index++], s + (i - len), len + 1);
+		word[i] = str[i];
+		if (!str[i])
+			return (free_str(&str, i));
+		i++;
 	}
-	return (1);
+	word[i] = '\0';
+	return (word);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char *str, char *charset)
 {
-	char	**arr;
-	size_t	size;
+	char	**strings;
+	int		i;
+	int		str_len;
 
-	if (NULL == s)
-		return (NULL);
-	size = ft_count_word(s, c);
-	arr = (char **)malloc((size + 1) * sizeof(char *));
-	if (NULL == arr)
-		return (NULL);
-	arr[size] = NULL;
-	if (!ft_rspl(arr, s, c, size))
-		return (NULL);
-	return (arr);
+	i = 0;
+	str_len = count_words(str, charset);
+	strings = (char **)malloc(sizeof(char *) * (str_len + 1));
+	while (*str)
+	{
+		while (*str && is_separator(*str, charset))
+			str++;
+		if (*str)
+		{
+			strings[i] = ft_words(str, charset);
+			i++;
+		}
+		while (*str && !is_separator(*str, charset))
+			str++;
+	}
+	strings[i] = 0;
+	return (strings);
 }
