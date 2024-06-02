@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:17:34 by adam              #+#    #+#             */
-/*   Updated: 2024/05/24 10:51:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/02 08:38:02 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	check_quote(char *str, int a)
 			j = i + 1;
 			while (str[j] && str[j] != str[i])
 				j++;
+			if (j == ft_strlen(str))
+				return (0);
 			if (a > i && a < j)
 				return (1);
 			i = j + 1;

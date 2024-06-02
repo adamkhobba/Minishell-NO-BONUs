@@ -6,7 +6,7 @@
 /*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:30:00 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/01 09:51:25 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/02 08:14:47 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,40 +31,29 @@ int	ft_count_spaces(char *input)
 	return (count);
 }
 
-char	*ft_add_spaces(char *input)
+char	*ft_add_spaces(char *input, int j)
 {
 	int		i;
-	int		j;
 	char	*tmp;
-	int		size_plus;
 
-	size_plus = ft_count_spaces(input) * 2;
-	tmp = malloc(ft_strlen(input) + size_plus + 1);
+	i = ft_count_spaces(input) * 2;
+	tmp = malloc(ft_strlen(input) + i + 1);
 	i = 0;
-	j = 0;
 	while (input[j])
 	{
-		if ((input[j] == '<' && input[i + 1] != '<') || (input[i] == '>'
-				&& input[j + 1] != '>') || input[i] == '|')
+		if (input[j] == '<'|| input[j] == '>'|| input[i] == '|')
 		{
-        	tmp[i] = ' ';
-        	tmp[i + 1] = input[j];
-        	tmp[i + 2] = ' ';
-			i += 2;
-		}
-		else if ((input[j] == '<' && input[i + 1] == '<') || (input[i] == '>'
-				&& input[j + 1] == '>'))
-		{
-        	tmp[i] = ' ';
-        	tmp[i + 1]= input[j];
-        	tmp[i + 2] = input[j + 1];
-        	tmp[i + 3] = ' ';
-			i += 3;
-			j++;
+			tmp[i] = ' ';
+			tmp[++i] = input[j++];
+			if (input[j] == '<'|| input[j] == '>')
+			{
+				tmp [++i] = input[j++];
+			}
+			tmp[++i] = ' ';
+			i++;
 		}
 		else
-			tmp[i++] = input[j];
-		j++;
+			tmp[i++] = input[j++];
 	}
 	tmp[i] = '\0';
 	return (tmp);
@@ -75,7 +64,7 @@ char	**ft_lexer(char *input)
 	char **split_input;
     char *input_spaces;
 
-	input_spaces = ft_add_spaces(input);
+	input_spaces = ft_add_spaces(input, 0);
 	split_input = ft_split(input_spaces, ' ');
 	free(input_spaces);
 	return (split_input);
