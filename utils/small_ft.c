@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   small_ft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:16:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/30 15:32:50 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/02 19:10:25 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	ft_strlen(const char *str)
+void	*free_str(char **tab, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < c)
+	{
+		free(tab[i]);
 		i++;
-	return (i);
+	}
+	free(tab);
+	return (NULL);
 }
 
 int	ft_isdigit(int c)

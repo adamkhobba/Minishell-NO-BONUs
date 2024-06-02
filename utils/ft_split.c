@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:17:34 by adam              #+#    #+#             */
-/*   Updated: 2024/06/02 18:50:37 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:12:55by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,6 @@ int	check_quote(char *str, int a)
 	return (0);
 }
 
-static int	is_separator(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 static int	count_words(char *str, char *charset)
 {
@@ -60,11 +47,12 @@ static int	count_words(char *str, char *charset)
 	count = 0;
 	while (str[i])
 	{
-		while (str[i] && is_separator(str[i], charset))
+		while (str[i] && ft_strchr(str[i], charset) && !check_quote(str, i))
 			i++;
 		if (str[i])
 			count++;
-		while (str[i] && !is_separator(str[i], charset))
+		while (str[i] && (!ft_strchr(str[i], charset) ||
+			(ft_strchr(str[i], charset) && check_quote(str, i))))
 			i++;
 	}
 	return (count);
@@ -75,7 +63,8 @@ static	int	char_sep(char *str, char *charset)
 	int	i;
 
 	i = 0;
-	while (str[i] && !is_separator(str[i], charset))
+	while (str[i] && (!ft_strchr(str[i], charset) ||
+		(ft_strchr(str[i], charset) && check_quote(str, i))))
 		i++;
 	return (i);
 }
@@ -104,23 +93,26 @@ char	**ft_split(char *str, char *charset)
 {
 	char	**strings;
 	int		i;
+	int		j;	
 	int		str_len;
 
 	i = 0;
+	j = 0;
 	str_len = count_words(str, charset);
 	strings = (char **)malloc(sizeof(char *) * (str_len + 1));
-	while (*str)
+	while (str[j])
 	{
-		while (*str && is_separator(*str, charset))
-			str++;
-		if (*str)
+		while (str[j] && ft_strchr(str[j], charset) && !check_quote(str, j))
+			j++;
+		if (str[j])
 		{
-			strings[i] = ft_words(str, charset);
+			strings[i] = ft_words(&str[j], charset);
 			i++;
 		}
-		while (*str && !is_separator(*str, charset))
-			str++;
+		while (str[j] && (!ft_strchr(str[j], charset) ||
+			(ft_strchr(str[j], charset) && check_quote(str, j))))
+			j++;
 	}
-	strings[i] = 0;
+	strings[i] = (void *)0;
 	return (strings);
 }

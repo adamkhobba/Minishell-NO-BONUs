@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 18:09:18 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:21:44 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ t_link *ft_def_type(char **input);
 t_command *ft_check_command(t_link *link);
 
 //utils
+void	            *free_str(char **tab, int c);
+int                 ft_strchr(int c, const char *s);
 void                ft_free(char **str);
-char				**ft_split(char *str, char c);
+char				**ft_split(char *str, char *c);
 void				ft_putstr(char *s, int fd);
 int					ft_isdigit(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
