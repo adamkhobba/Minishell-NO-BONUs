@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/03 13:00:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:48:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ char *ft_check_type(char *command)
 {
      char *path;
 
-     if (!ft_strncmp(command, "ls", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "echo", ft_strlen(command)))
+     if (!ft_strncmp(command, "echo", ft_strlen(command)))
           return (ft_strdup(command));
      else if (!ft_strncmp(command, "export", ft_strlen(command)))
           return (ft_strdup(command));

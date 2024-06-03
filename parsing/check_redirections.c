@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 08:41:52 by adam              #+#    #+#             */
-/*   Updated: 2024/06/03 14:21:48 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:24:22 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,30 @@ int ft_check_pipe_redirections(t_link *link, t_command *command)
         return (0);
     return (1);
 }
+
 int ft_check_pipe(t_link *link, t_command *command)
 {
     while (link)
     {
         if (link->identifer == PIPE)
         {
-            if (link->next->identifer == STR && link->prev && link->)
+            if (link->next->identifer == STR && link->prev
+                && link->prev->identifer == STR)
+               {
+                    command->redirection->identifer = PIPE;
+                    command->redirection->file = ft_strdup(link->next->command);
+                    command->redirection = command->redirection->next;
+               } 
+               else 
+               {
+                     // here it should be an error handling related to error struct
+                     return (0);
+               }
         }
-
     }
+        return (1);
 }
+
 int ft_check_less(t_link *link, t_command *command)
 {
     while (link)

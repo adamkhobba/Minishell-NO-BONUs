@@ -6,14 +6,13 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/03 13:16:19 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:35:58 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-
-#ifndef MINISHELL
-# define MINISHELL
+#ifndef MINISHELL_H
+# define MINISHELL_H
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
