@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   check_command.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 08:38:40 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/03 13:00:49 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char *ft_check_command_path(char *command)
 
      i = 0;
      path = getenv("PATH");
-     split_path = ft_split(path, ':');
+     split_path = ft_split(path, ":");
      while (split_path[i])
      {
           join_path = ft_strjoin(split_path[i], "/");

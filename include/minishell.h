@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 19:21:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/03 13:16:19 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,24 @@ typedef enum e_type
     PIPE
 } t_type;
 
+typedef struct s_redirection
+{
+    t_type identifer;
+    char *file;
+    struct s_redirection *next;
+} t_redirection;
+
+typedef struct s_error
+{
+    int error;
+    struct s_error *next;
+} t_error;
+
 typedef struct s_command
 {
     char *command;
     char **args;
-    char *input;
-    char *output;
-    char *append;
-    char *heredoc;
+    t_redirection *redirection; 
     struct s_command *next;
 }t_command;
 

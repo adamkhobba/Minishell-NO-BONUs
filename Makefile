@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adam <adam@student.42.fr>                  +#+  +:+       +#+         #
+#    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/06/02 08:40:36 by adam             ###   ########.fr        #
+#    Updated: 2024/06/03 13:10:50 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRC = main.c  parsing/lexer.c parsing/def_type.c parsing/parser.c\
 		utils/ft_split.c utils/small_ft.c utils/ft_lstadd_front_bonus.c\
 		utils/ft_atoi.c utils/ft_strcmp.c utils/ft_lstadd_back_bonus.c\
 		utils/ft_lstnew_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstlast_bonus.c\
-		utils/ft_lstsize_bonus.c utils/ft_strdup.c utils/ft_free.c\
-		utils/ft_lstclear_bonus.c utils/ft_putstr.c\
+		utils/ft_lstsize_bonus.c utils/ft_strdup.c utils/ft_free.c utils/ft_strlen.c\
+		utils/ft_lstclear_bonus.c utils/ft_putstr.c utils/ft_strchr.c\
 
 OBJ = ${SRC:.c=.o}
 

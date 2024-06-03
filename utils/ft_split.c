@@ -37,7 +37,6 @@ int	check_quote(char *str, int a)
 	return (0);
 }
 
-
 static int	count_words(char *str, char *charset)
 {
 	int	i;

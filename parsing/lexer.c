@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:30:00 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 15:44:26 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/03 13:00:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_lexer(char *input)
     char *input_spaces;
 
 	input_spaces = ft_add_spaces(input, 0);
-	split_input = ft_split(input_spaces, ' ');
+	split_input = ft_split(input_spaces, " \n\t\v\f\r");
 	free(input_spaces);
 	return (split_input);
 }
