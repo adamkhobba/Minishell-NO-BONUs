@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:30:00 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/03 13:00:06 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:53:40 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_add_spaces(char *input, int j)
 	i = 0;
 	while (input[j])
 	{
-		if (input[j] == '<'|| input[j] == '>'|| input[i] == '|')
+		if (input[j] == '<'|| input[j] == '>'|| input[j] == '|')
 		{
 			tmp[i] = ' ';
 			tmp[++i] = input[j++];

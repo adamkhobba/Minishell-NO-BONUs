@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:11:17 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/29 09:47:11 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 12:26:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_link *ft_def_type(char **input)
     t_link *node;
     int i;
 
-    i = 1;
-    link = ft_lstnew(input[0]);
+    i = 0;
+    link = NULL;
     while (input[i])
     {
         node = ft_lstnew(input[i]);

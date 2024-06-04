@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 11:35:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 12:25:04 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,21 @@ t_command *ft_check_command(t_link *link)
      t_command *command;
 
      tmp = link;
+     command = NULL;
      while (tmp)
      {
-          while (tmp)
+          if (tmp->identifer == STR)
           {
-               if (tmp && tmp->identifer == STR)
-                    break; 
-               tmp = tmp->next;
+               if (!tmp)
+                    return (NULL);
+               str = ft_check_type(tmp->command);
+               printf("str=%s\n", str);
+               node = ft_lstnew_command(str); 
+               ft_lstadd_back_command(&command, node); 
+               printf("command=%s type=%d\n", tmp->command, tmp->identifer);
+               // if (!command->command)
+               //      return (NULL);
           }
-          if (!tmp)
-               return (NULL);
-          str = ft_check_type(tmp->command);
-          node = ft_lstnew_command(str); 
-          ft_lstadd_back_command(&command, node); 
-          if (!command->command)
-               return (NULL);
           tmp = tmp->next;
      }
         return (command);

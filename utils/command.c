@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:39:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 11:29:08 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 12:22:50 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void  ft_lstadd_back_command(t_command **list, t_command *node)
 {
     t_command *tmp;
 
-    if (!list)
+    if (!list || !node)
         return ;
     if (!*list)
     {
@@ -34,6 +34,8 @@ t_command *ft_lstnew_command(char *content)
 
     node = malloc(sizeof(t_command));
     if (node == NULL)
+        return (NULL);
+    if (!content)
         return (NULL);
     node->command = content;
     node->next = NULL;
