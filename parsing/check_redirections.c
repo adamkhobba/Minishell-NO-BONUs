@@ -6,133 +6,124 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 08:41:52 by adam              #+#    #+#             */
-/*   Updated: 2024/06/03 14:24:22 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:14by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int ft_check_pipe_redirections(t_link *link, t_command *command)
+int ft_check_less(t_link *link, t_redirection **file)
 {
-    if (!ft_check_less(link, command))
-        return (0);
-    else if (!ft_check_great(link, command))
-        return (0);
-    else if (!ft_check_lessless(link, command))
-        return (0);
-    else if (!ft_check_greatgreat(link, command))
-        return (0);
-    else if (!ft_check_pipe(link, command))
-        return (0);
-    return (1);
-}
+    t_redirection *node;
+    t_error *error_node;
 
-int ft_check_pipe(t_link *link, t_command *command)
-{
-    while (link)
+    if (link->identifer == LESS)
     {
-        if (link->identifer == PIPE)
+        if (link->next->identifer == STR)
         {
-            if (link->next->identifer == STR && link->prev
-                && link->prev->identifer == STR)
-               {
-                    command->redirection->identifer = PIPE;
-                    command->redirection->file = ft_strdup(link->next->command);
-                    command->redirection = command->redirection->next;
-               } 
-               else 
-               {
-                     // here it should be an error handling related to error struct
-                     return (0);
-               }
+            node = ft_lstnew_redi(link->next->command);
+            node->identifer = LESS;
+            ft_lstadd_back_redi(file, node);
+            return (1);
+        }
+        else 
+        {
+            error_node = ft_lstnew_error(ERROR_LESS);
+            ft_lstadd_back_error(error, error_node);
+            return (0);
         }
     }
-        return (1);
-}
-
-int ft_check_less(t_link *link, t_command *command)
-{
-    while (link)
-    {
-            if (link->identifer == LESS)
-            {
-                if (link->next->identifer == STR)
-                {
-                    command->redirection->identifer = LESS;
-                    command->redirection->file = ft_strdup(link->next->command);
-                    command = command->next;
-                }
-                else 
-                {
-                    // here it should be an error handling related to error struct 
-                    return (0);
-                }
-            }            
-    }
             return (1);
 }
 
-int ft_check_great(t_link *link, t_command *command)
+int ft_check_lessless(t_link *link, t_redirection **file)
 {
-    while (link)
+    t_redirection *node;
+    t_error *error_node;
+
+    if (link->identifer == LESSLESS)
     {
-            if (link->identifer == GREAT)
-            {
-                if (link->next->identifer == STR)
-                {
-                    command->redirection->identifer = GREAT; 
-                    command->redirection->file = ft_strdup(link->next->command);
-                    command->redirection = command->redirection->next;
-                }
-                else 
-                {
-                    // here it should be an error handling related to error struct 
-                    return (0);
-                }
-            }            
-    }
+        if (link->next->identifer == STR)
+        {
+            node = ft_lstnew_redi(link->next->command);
+            node->identifer = LESSLESS;
+            ft_lstadd_back_redi(file, node);
             return (1);
-}
-int ft_check_lessless(t_link *link, t_command *command)
-{
-    while (link)
-    {
-            if (link->identifer == LESSLESS)
-            {
-                if (link->next->identifer == STR)
-                {
-                    command->redirection->identifer = LESSLESS;
-                    command->redirection->file = ft_strdup(link->next->command);
-                    command->redirection = command->redirection->next;
-                }
-                else 
-                {
-                    // here it should be an error handling related to error struct
-                    return (0);
-                }
-            }            
+        }
+        else 
+        {
+            error_node = ft_lstnew_error(ERROR_LESSLESS);
+            ft_lstadd_back_error(error, error_node);
+            return (0);
+        }
     }
             return (1);
 }
 
-int ft_check_greatgreat(t_link *link, t_command *command)
+int ft_check_great(t_link *link, t_redirection **file)
 {
-    while (link)
+    t_redirection *node;
+    t_error *error_node;
+
+    if (link->identifer == GREAT)
     {
-            if (link->identifer == GREATGREAT)
-            {
-                if (link->next->identifer == STR)
-                {
-                    command->redirection->identifer = GREATGREAT;
-                    command->redirection->file = ft_strdup(link->next->command);
-                    command->redirection = command->redirection->next;
-                }
-                else 
-                {
-                    // here it should be an error handling related to error struct
-                    return (0);
-                }
-            }            
+        if (link->next->identifer == STR)
+        {
+            node = ft_lstnew_redi(link->next->command);
+            node->identifer = GREAT;
+            ft_lstadd_back_redi(file, node);
+            return (1);
+        }
+        else 
+        {
+            error_node = ft_lstnew_error(ERROR_GREAT);
+            ft_lstadd_back_error(error, error_node);
+            return (0);
+        }
     }
             return (1);
+}
+
+int ft_check_greatgreat(t_link *link, t_redirection **file)
+{
+    t_redirection *node;
+    t_error *error_node;
+
+    if (link->identifer == GREATGREAT)
+    {
+        if (link->next->identifer == STR)
+        {
+            node = ft_lstnew_redi(link->next->command);
+            node->identifer = GREATGREAT;
+            ft_lstadd_back_redi(file, node);
+            return (1);
+        }
+        else 
+        {
+            error_node = ft_lstnew_error(ERROR_GREATGREAT);
+            ft_lstadd_back_error(error, error_node);
+            return (0);
+        }
+    }
+            return (1);
+}
+
+int ft_check_redirections(t_link *link, t_redirection **redirectoin)
+{
+    t_link *tmp;
+
+    tmp = link;
+    while (tmp) 
+    {
+        if (!ft_check_less(tmp, redirectoin))
+            return (0);
+        else if (!ft_check_great(tmp, redirectoin))
+            return (0);
+        else if (!ft_check_lessless(tmp, redirectoin))
+            return (0);
+        else if (!ft_check_greatgreat(tmp, redirectoin))
+            return (0);
+        tmp = tmp->next;
+    }
+    return (1);
 }

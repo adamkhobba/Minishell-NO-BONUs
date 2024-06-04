@@ -6,11 +6,14 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/29 15:34:03 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 07:03:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
+ 
+
+t_error **error;
 
 int main() {
     char *input;

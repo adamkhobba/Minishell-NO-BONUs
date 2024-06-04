@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/03 14:48:39 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:35:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ char *ft_check_type(char *command)
 t_command *ft_check_command(t_link *link)
 {
      t_link *tmp;
+     char *str;
+     t_command *node;
      t_command *command;
 
      tmp = link;
@@ -75,21 +77,18 @@ t_command *ft_check_command(t_link *link)
      {
           while (tmp)
           {
-               if (tmp->identifer == STR)
+               if (tmp && tmp->identifer == STR)
                     break; 
                tmp = tmp->next;
           }
           if (!tmp)
                return (NULL);
-          command->command = ft_check_type(tmp->command);
+          str = ft_check_type(tmp->command);
+          node = ft_lstnew_command(str); 
+          ft_lstadd_back_command(&command, node); 
           if (!command->command)
-          {
-               ft_putstr("minishell: command not found: ", 2);
-               ft_putstr(tmp->command, 2);
                return (NULL);
-          }
-               tmp = tmp->next;
-               command = command->next;
+          tmp = tmp->next;
      }
         return (command);
 }
