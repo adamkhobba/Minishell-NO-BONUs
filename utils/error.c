@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:16:10 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 12:23:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 17:02:49 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_lstadd_back_error(t_error **list, t_error *node)
 {
     t_error *tmp;
  
-    if (!list || !node)
+    if (!list)
         return ;
     if (!*list)
     {

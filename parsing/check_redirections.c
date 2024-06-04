@@ -17,7 +17,7 @@ int ft_check_less(t_link *link, t_redirection **file)
     t_redirection *node;
     t_error *error_node;
 
-    if (link->identifer == LESS)
+    if (link->next && link->identifer == LESS)
     {
         if (link->next->identifer == STR)
         {
@@ -43,7 +43,7 @@ int ft_check_lessless(t_link *link, t_redirection **file)
 
     if (link->identifer == LESSLESS)
     {
-        if (link->next->identifer == STR)
+        if (link->next && link->next->identifer == STR)
         {
             node = ft_lstnew_redi(link->next->command);
             node->identifer = LESSLESS;
@@ -67,7 +67,7 @@ int ft_check_great(t_link *link, t_redirection **file)
 
     if (link->identifer == GREAT)
     {
-        if (link->next->identifer == STR)
+        if (link->next && link->next->identifer == STR)
         {
             node = ft_lstnew_redi(link->next->command);
             node->identifer = GREAT;
@@ -91,7 +91,7 @@ int ft_check_greatgreat(t_link *link, t_redirection **file)
 
     if (link->identifer == GREATGREAT)
     {
-        if (link->next->identifer == STR)
+        if (link->next && link->next->identifer == STR)
         {
             node = ft_lstnew_redi(link->next->command);
             node->identifer = GREATGREAT;

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:11:17 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 12:26:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 16:47:42 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ t_link *ft_def_type(char **input)
             node->identifer = STR;
         ft_lstadd_back(&link, node);
         i++;
-    }
+    } 
     return (link);
 } 
