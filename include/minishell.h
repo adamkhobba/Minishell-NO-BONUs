@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 16:58:54 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 21:11:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef enum e_errorn
     ERROR_GREAT,
     ERROR_GREATGREAT,
     ERROR_PIPE,
-    ERROR_COMMAND
+    ERROR_COMMAND,
+    ERROR_NON_COMMAND
 } t_errorn;
 
 typedef struct s_error
@@ -52,6 +53,7 @@ typedef struct s_error
     3: error in greatgreat(append) redirection
     4: error in pipe redirection
     5: error in command (no command found)
+    6: error in command (no command in the input)
 */
 
 typedef struct s_redirection

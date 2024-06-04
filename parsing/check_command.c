@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 19:32:42 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/04 21:12:51 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,5 @@ t_command *ft_check_command(t_link *link)
      }
         return (command);
 }
+
+// i shoudl check if the STR is a command or a file for any redirection
