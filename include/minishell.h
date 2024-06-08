@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 12:19:27 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 13:04:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void ft_lstadd_back_error(t_error **list, t_error *node);
 t_command *ft_lstnew_command(char *content);
 void  ft_lstadd_back_command(t_command **list, t_command *node);
 void    ft_lstclear_command(t_command **list);
+void ft_free_command(t_command **command);
 
 //utils
 void	            *free_str(char **tab, int c);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 08:50:57 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 15:38:33 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_command *ft_check_command(t_link *link)
                if (!str)
                     return (NULL);
                node = ft_lstnew_command(str); 
+               free(str);
                ft_lstadd_back_command(&command, node); 
                return (command);
           }
@@ -92,5 +93,3 @@ t_command *ft_check_command(t_link *link)
      ft_lstadd_back_command(&command, node); 
      return (command);
 }
-
-// i shoudl check if the STR is a command or a file for any redirection

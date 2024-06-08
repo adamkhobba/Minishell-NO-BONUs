@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 12:12:48 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 13:05:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ t_command *ft_parser(char *input, char ***split_input)
     {
         error_node = ft_lstnew_error(ERROR_COMMAND);     
         ft_lstadd_back_error(error, error_node);
+        ft_free_command(&command);
         return (NULL);
     }
     command->redirection = NULL;
     if (!ft_check_redirections(link, &(command->redirection)))
+    {
+        ft_free_command(&command);
         return (NULL);
+    }
     ft_lstclear(&link);
     return (command);
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 12:23:51 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 15:36:18 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,21 @@ int main() {
             break;
         }
         command = ft_parser(input, &split_input);
-        while (command)
-        {
-            printf("command=%s\n", command->command);
-            while (command->redirection)
-            {
-                printf("file=%s id=%d\n", command->redirection->file,
-                    command->redirection->identifer);
-                    command->redirection = command->redirection->next;
-            }
-            command = command->next;
-        } 
-        if (command && command->redirection)
-            ft_lstclear_redi(&(command->redirection));
-        if (command)
-            ft_lstclear_command(&command);
+        // while (command)
+        // {
+        //     printf("command=%s\n", command->command);
+        //     while (command->redirection)
+        //     {
+        //         printf("file=%s id=%d\n", command->redirection->file,
+        //             command->redirection->identifer);
+        //             command->redirection = command->redirection->next;
+        //     }
+        //     command = command->next;
+        // } 
+        ft_free_command(&command); 
         free(input);
         ft_free(split_input);
     }
-    if (command && command->redirection)
-        ft_lstclear_redi(&(command->redirection));
-    if (command)
-        ft_lstclear_command(&command);
+    ft_free_command(&command); 
     return 0;
 }
