@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 21:12:51 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 08:50:57 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,21 @@ t_command *ft_check_command(t_link *link)
      command = NULL;
      while (tmp)
      {
-          if (tmp && tmp->identifer == STR)
+          if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
+               && tmp->identifer == STR)
           {
                str = ft_check_type(tmp->command);
+               if (!str)
+                    return (NULL);
                node = ft_lstnew_command(str); 
                ft_lstadd_back_command(&command, node); 
-               if (!command->command)
-                    return (NULL);
+               return (command);
           }
                tmp = tmp->next;
      }
-        return (command);
+     node = ft_lstnew_command(NULL);
+     ft_lstadd_back_command(&command, node); 
+     return (command);
 }
 
 // i shoudl check if the STR is a command or a file for any redirection

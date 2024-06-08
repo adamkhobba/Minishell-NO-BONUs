@@ -113,6 +113,8 @@ int ft_check_redirections(t_link *link, t_redirection **redirectoin)
     t_link *tmp;
 
     tmp = link;
+    printf("sssuuu\n");
+    *redirectoin = NULL;
     while (tmp) 
     {
         if (!ft_check_less(tmp, redirectoin))

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 21:11:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 08:55:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ extern t_error **error;
 
 //src
 char	**ft_lexer(char *input);
-int ft_parser(char *input);
+t_command *ft_parser(char *input);
 t_link *ft_def_type(char **input);
 t_command *ft_check_command(t_link *link);
 int ft_check_redirections(t_link *link, t_redirection **redirectoin);
@@ -124,6 +124,10 @@ void ft_lstadd_back_redi(t_redirection **list, t_redirection *node);
 
 
 //link_ft
+    // dbl link_ft
+void	ft_dbl_lstadd_back(t_link **lst, t_link *new);
+t_link	*ft_dbl_lstnew(void *content);
+
 t_link				*ft_create_node(int nbr);
 t_link				*ft_create_node(int nbr);
 t_link				*ft_lstnew(void *content);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:11:17 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 16:47:42 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 08:23:03 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_link *ft_def_type(char **input)
     link = NULL;
     while (input[i])
     {
-        node = ft_lstnew(input[i]);
+        node = ft_dbl_lstnew(input[i]);
         if (!ft_strncmp(input[i], "<", ft_strlen(input[i]))) 
             node->identifer = LESS;
         else if (!ft_strncmp(input[i], ">", ft_strlen(input[i]))) 
@@ -35,7 +35,7 @@ t_link *ft_def_type(char **input)
             node->identifer = PIPE;
         else
             node->identifer = STR;
-        ft_lstadd_back(&link, node);
+        ft_dbl_lstadd_back(&link, node);
         i++;
     } 
     return (link);

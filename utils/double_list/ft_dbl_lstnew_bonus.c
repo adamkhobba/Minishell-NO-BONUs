@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dbl_lstnew_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:36:31 by akhobba           #+#    #+#             */
-/*   Updated: 2024/05/30 19:37:38 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/08 08:25:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 t_link	*ft_dbl_lstnew(void *content)
 {

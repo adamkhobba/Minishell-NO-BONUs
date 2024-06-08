@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 07:03:09 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 08:54:48 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main() {
             free(input);
             break;
         }
-        printf("%d\n",ft_parser(input));
+        ft_parser(input);
         free(input);
     }
     return 0;
