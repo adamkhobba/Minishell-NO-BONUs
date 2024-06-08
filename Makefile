@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:33:36 by akhobba           #+#    #+#              #
-#    Updated: 2024/06/08 08:24:46 by akhobba          ###   ########.fr        #
+#    Updated: 2024/06/08 11:01:15 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = main.c  parsing/lexer.c parsing/def_type.c parsing/parser.c\
 		utils/ft_lstclear_bonus.c utils/ft_putstr.c utils/ft_strchr.c utils/command.c\
 		utils/ft_lst_redi.c utils/double_list/ft_dbl_lstadd_back_bonus.c\
 		utils/double_list/ft_dbl_lstnew_bonus.c
+
 OBJ = ${SRC:.c=.o}
 
 NAME = minishell

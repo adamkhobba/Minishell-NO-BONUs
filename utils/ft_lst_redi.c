@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 09:57:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/07 16:17:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 12:18:53 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void ft_lstadd_back_redi(t_redirection **list, t_redirection *node)
 {
     t_redirection *tmp;
 
-    printf("node->file = %s\n", node->file);
     if (!list)
         return ;
     if (!*list)
@@ -40,4 +39,28 @@ t_redirection    *ft_lstnew_redi(char *content)
     node->file = content;
     node->next = NULL;
     return (node);
+}
+void	ft_lstdelone_redi(t_redirection *lst)
+{
+	if (!lst)
+		return ;
+	free(lst);
+}
+
+void	ft_lstclear_redi(t_redirection **lst)
+{
+	t_redirection	*current;
+	t_redirection	*twp;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		twp = current;
+		current = current->next;
+		ft_lstdelone_redi(twp);
+		
+	}
+	*lst = NULL;
 }

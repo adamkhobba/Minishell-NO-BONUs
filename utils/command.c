@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:39:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/07 17:20:53 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 12:29:11 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,27 @@ t_command *ft_lstnew_command(char *content)
     node->command = content;
     node->next = NULL;
     return (node);
+}
+void	ft_lstdelone_command(t_command *lst)
+{
+	if (!lst)
+		return ;
+	free(lst);
+}
+
+void	ft_lstclear_command(t_command **lst)
+{
+	t_command	*current;
+	t_command	*twp;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		twp = current;
+		current = current->next;
+		ft_lstdelone_command(twp);
+	}
+	*lst = NULL;
 }

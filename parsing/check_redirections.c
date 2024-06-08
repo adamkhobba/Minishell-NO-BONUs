@@ -17,9 +17,9 @@ int ft_check_less(t_link *link, t_redirection **file)
     t_redirection *node;
     t_error *error_node;
 
-    if (link->next && link->identifer == LESS)
+    if (link->identifer == LESS)
     {
-        if (link->next->identifer == STR)
+        if (link->next && link->next->identifer == STR)
         {
             node = ft_lstnew_redi(link->next->command);
             node->identifer = LESS;
@@ -113,7 +113,6 @@ int ft_check_redirections(t_link *link, t_redirection **redirectoin)
     t_link *tmp;
 
     tmp = link;
-    printf("sssuuu\n");
     *redirectoin = NULL;
     while (tmp) 
     {

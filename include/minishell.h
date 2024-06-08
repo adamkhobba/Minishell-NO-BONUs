@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 08:55:27 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 12:19:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ extern t_error **error;
 
 //src
 char	**ft_lexer(char *input);
-t_command *ft_parser(char *input);
+t_command *ft_parser(char *input, char ***split_input);
 t_link *ft_def_type(char **input);
 t_command *ft_check_command(t_link *link);
 int ft_check_redirections(t_link *link, t_redirection **redirectoin);
@@ -100,6 +100,7 @@ void ft_lstadd_back_error(t_error **list, t_error *node);
 // command_ft
 t_command *ft_lstnew_command(char *content);
 void  ft_lstadd_back_command(t_command **list, t_command *node);
+void    ft_lstclear_command(t_command **list);
 
 //utils
 void	            *free_str(char **tab, int c);
@@ -121,7 +122,7 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 // rediction_ft
 t_redirection    *ft_lstnew_redi(char *content);
 void ft_lstadd_back_redi(t_redirection **list, t_redirection *node);
-
+void ft_lstclear_redi(t_redirection **list);
 
 //link_ft
     // dbl link_ft
