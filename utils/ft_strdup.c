@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:17:07 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 19:09:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 19:53:49 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,26 @@ char	*ft_strdup(const char *s)
 		i++;
 	}
 	put[i] = '\0';
+	return (put);
+}
+
+char	**ft_strdup_pro(char **ptr)
+{
+	char	**ptr;
+	char	**put;
+	int		size;
+	size_t	i;
+
+	i = 0;
+	size = ft_count_strs(ptr);
+	put = malloc(sizeof(char *) * (size + 1));
+	if (!put)
+		return (0);
+	while (ptr[i])
+	{
+		put[i] = ft_strdup(ptr[i]);
+		i++;
+	}
+	put[i] = NULL;
 	return (put);
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:39:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 13:04:36 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/08 16:16:13 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_lstclear_command(t_command **lst)
 	{
 		twp = current;
 		current = current->next;
+        free(twp->command);
 		ft_lstdelone_command(twp);
 	}
 	*lst = NULL;

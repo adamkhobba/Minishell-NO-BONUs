@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 15:38:33 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 10:36:41 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,26 @@ char *ft_check_type(char *command)
      return (NULL);
 }
 
+t_command *ft_set_args(t_link *link, t_command *command)
+{
+     t_link *tmp;
+
+     tmp = link;
+     while (tmp)
+     {
+          if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
+               && tmp->identifer == STR)
+          {
+               if (ft_strncmp(tmp->command, command->command, ft_strlen(tmp->command)))
+               {
+                    command->args = ft_strjoin_pro(command->args, &tmp->command);
+               }
+          }
+          tmp = tmp->next;
+     }
+     return (command);
+}
+
 t_command *ft_check_command(t_link *link)
 {
      t_link *tmp;
@@ -83,7 +103,6 @@ t_command *ft_check_command(t_link *link)
                if (!str)
                     return (NULL);
                node = ft_lstnew_command(str); 
-               free(str);
                ft_lstadd_back_command(&command, node); 
                return (command);
           }

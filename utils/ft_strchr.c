@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 18:55:04 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/02 19:24:18 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 11:02:21 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_strchr(int c, const char *s)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return (1);
+			return (i + 1);
 		i++;
 	}
 	return (0);
