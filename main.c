@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/09 13:37:03 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 22:00:21 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_error **error;
 int main() {
     char *input;
     t_command *command;
-    char **split_input;
 
     while (1)
     {
@@ -32,7 +31,7 @@ int main() {
             free(input);
             break;
         }
-        command = ft_parser(input, &split_input);
+        command = ft_parser(input);
         t_command *tmp = command;
         while (tmp)
         {

@@ -12,58 +12,58 @@
 
 #include "../include/minishell.h"
 
-char *ft_check_command_path(char *command)
-{
-     char *path;
-     char **split_path;
-     char *join_path;
-     char *join_path1;
-     int i;
+// char *ft_check_command_path(char *command)
+// {
+//      char *path;
+//      char **split_path;
+//      char *join_path;
+//      char *join_path1;
+//      int i;
 
-     i = 0;
-     path = getenv("PATH");
-     split_path = ft_split(path, ":");
-     while (split_path[i])
-     {
-          join_path = ft_strjoin(split_path[i], "/");
-          join_path1 = ft_strjoin(join_path, command);
-          if (access(join_path1, F_OK) == 0)
-          {
-               ft_free(split_path);
-               free(join_path);
-               return (join_path1);
-          }
-          free(join_path);
-          free(join_path1);
-          i++;
-     }
-     ft_free(split_path);
-     return (NULL);
-}
+//      i = 0;
+//      path = getenv("PATH");
+//      split_path = ft_split(path, ":");
+//      while (split_path[i])
+//      {
+//           join_path = ft_strjoin(split_path[i], "/");
+//           join_path1 = ft_strjoin(join_path, command);
+//           if (access(join_path1, F_OK) == 0)
+//           {
+//                ft_free(split_path);
+//                free(join_path);
+//                return (join_path1);
+//           }
+//           free(join_path);
+//           free(join_path1);
+//           i++;
+//      }
+//      ft_free(split_path);
+//      return (NULL);
+// }
 
-char *ft_check_type(char *command)
-{
-     char *path;
+// char *ft_check_type(char *command)
+// {
+//      char *path;
 
-     if (!ft_strncmp(command, "echo", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "export", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "unset", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "pwd", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "env", ft_strlen(command)))
-          return (ft_strdup(command));
-     else if (!ft_strncmp(command, "cd", ft_strlen(command)))
-          return (ft_strdup(command));
-     else 
-     {
-          path = ft_check_command_path(command);
-               return(path);
-     }
-     return (NULL);
-}
+//      if (!ft_strncmp(command, "echo", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else if (!ft_strncmp(command, "export", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else if (!ft_strncmp(command, "unset", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else if (!ft_strncmp(command, "pwd", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else if (!ft_strncmp(command, "env", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else if (!ft_strncmp(command, "cd", ft_strlen(command)))
+//           return (ft_strdup(command));
+//      else 
+//      {
+//           path = ft_check_command_path(command);
+//                return(path);
+//      }
+//      return (NULL);
+// }
 
 t_command *ft_set_args(t_link *link, t_command *command)
 {
@@ -99,10 +99,7 @@ t_command *ft_check_command(t_link *link)
           if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
                && tmp->identifer == STR)
           {
-               str = ft_check_type(tmp->command);
-               if (!str)
-                    return (NULL);
-               node = ft_lstnew_command(str); 
+               node = ft_lstnew_command(tmp->command); 
                ft_lstadd_back_command(&command, node); 
                return (command);
           }

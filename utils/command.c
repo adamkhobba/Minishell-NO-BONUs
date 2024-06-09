@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:39:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 16:16:13 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 22:08:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_command *ft_lstnew_command(char *content)
     node = malloc(sizeof(t_command));
     if (node == NULL)
         return (NULL);
-    node->command = content;
+    node->command = ft_strdup(content);
     node->next = NULL;
     return (node);
 }
@@ -58,7 +58,8 @@ void	ft_lstclear_command(t_command **lst)
 	{
 		twp = current;
 		current = current->next;
-        free(twp->command);
+        if (twp->command)
+            free(twp->command);
 		ft_lstdelone_command(twp);
 	}
 	*lst = NULL;

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/09 13:37:41 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 22:09:57 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,18 @@ int ft_quote_handler(t_link **list)
     return (1);
 }
 
-t_command *ft_parser(char *input, char ***split_input)
+t_command *ft_parser(char *input)
 {
     t_link *link;
     t_error *error_node;
     t_command *command;
+    char **split_input;
 
     command = NULL;
     error_node = NULL;
-    *split_input = ft_lexer(input);
-    link = ft_def_type(*split_input);
+    split_input = ft_lexer(input);
+    ft_free(split_input); // lost of leaks address
+    link = ft_def_type(split_input);
     if (!ft_quote_handler(link))
     {
         error_node = ft_lstnew_error(ERROR_QUOTE);

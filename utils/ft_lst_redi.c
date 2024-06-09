@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 09:57:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 12:18:53 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/09 22:08:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ t_redirection    *ft_lstnew_redi(char *content)
     node = malloc(sizeof(t_redirection));
     if (node == NULL)
         return (NULL);
-    node->file = content;
+    node->file = ft_strdup(content);
     node->next = NULL;
     return (node);
 }
+
 void	ft_lstdelone_redi(t_redirection *lst)
 {
 	if (!lst)
@@ -59,6 +60,8 @@ void	ft_lstclear_redi(t_redirection **lst)
 	{
 		twp = current;
 		current = current->next;
+        if (twp->file)
+            free(twp->file);
 		ft_lstdelone_redi(twp);
 		
 	}
