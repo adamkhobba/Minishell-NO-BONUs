@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/11 13:43:31 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 23:41:14 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void ft_set_args(t_link *link, t_command **command)
           if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
                && tmp->identifer == STR)
           {
-               if (tmp->command && !ft_strncmp(tmp->command, (*command)->command,
-                    ft_strlen(tmp->command)))
-               {
-                    if (!key)
-                         (*command)->args = ft_strjoin_pro((*command)->args, &tmp->command);
-                    key = 1;
-               }
-               else if (tmp->command && ft_strncmp(tmp->command, (*command)->command,
-                    ft_strlen(tmp->command)))
+               // if (tmp->command && !ft_strncmp(tmp->command, (*command)->command,
+               //      ft_strlen(tmp->command)))
+               // {
+               //      if (!key)
+               //           (*command)->args = ft_strjoin_pro((*command)->args, &tmp->command);
+               //      key = 1;
+               // }
+               // else if (tmp->command && ft_strncmp(tmp->command, (*command)->command,
+               //      ft_strlen(tmp->command)))
                     (*command)->args = ft_strjoin_pro((*command)->args, &tmp->command);
           }
           tmp = tmp->next;

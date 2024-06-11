@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:16:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/11 11:37:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 23:40:51 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**ft_strjoin_pro(char **s1, char **s2)
 	int		i[2];
 
 	i[0] = 0;
-	if (!s1 && !s2)
+	if (!s1 && !*s2)
 		return (NULL);
 	if (!s1)
 		return (free_str(s1, ft_count_strs(s1)),ft_strdup_pro(s2));
