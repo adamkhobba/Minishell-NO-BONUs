@@ -81,7 +81,7 @@ static char	*ft_words(char *str, char *charset)
 	{
 		word[i] = str[i];
 		if (!str[i])
-			return (free_str(&str, i));
+			return (free_str(&str, i), NULL);
 		i++;
 	}
 	word[i] = '\0';

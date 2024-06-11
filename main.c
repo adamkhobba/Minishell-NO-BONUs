@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/09 22:00:21 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:20:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main() {
     char *input;
     t_command *command;
 
+    command = NULL;
     while (1)
     {
         input = readline("minishell>");
@@ -33,9 +34,17 @@ int main() {
         }
         command = ft_parser(input);
         t_command *tmp = command;
+        int i;
         while (tmp)
         {
             printf("command=%s\n", tmp->command);
+            i = 0;
+            if (tmp->args)
+            while (tmp->args[i])
+            {
+                printf("args=%s\n", tmp->args[i]);
+                i++;
+            }
             while (tmp->redirection)
             {
                 printf("file=%s id=%d\n", tmp->redirection->file,
@@ -44,10 +53,8 @@ int main() {
             }
             tmp = tmp->next;
         } 
-        ft_free(command->args);
         ft_free_command(&command); 
         free(input);
-        ft_free(split_input); // lost of leaks address
     }
     ft_free_command(&command); 
     return 0;

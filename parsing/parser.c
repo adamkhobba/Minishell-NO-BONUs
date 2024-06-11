@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/09 22:09:57 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 13:38:18 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,18 +114,16 @@ t_command *ft_parser(char *input)
     t_command *command;
     char **split_input;
 
-    command = NULL;
-    error_node = NULL;
+    command = NULL; 
     split_input = ft_lexer(input);
-    ft_free(split_input); // lost of leaks address
     link = ft_def_type(split_input);
-    if (!ft_quote_handler(link))
-    {
-        error_node = ft_lstnew_error(ERROR_QUOTE);
-        ft_lstadd_back_error(error, error_node);
-        ft_lstclear(&link);
-        return (NULL);
-    }
+    // if (!ft_quote_handler(&link))
+    // {
+    //     error_node = ft_lstnew_error(ERROR_QUOTE);
+    //     ft_lstadd_back_error(error, error_node);
+    //     ft_lstclear(&link);
+    //     return (NULL);
+    // }
     command = ft_check_command(link);
     if (!command)
     {
@@ -135,7 +133,6 @@ t_command *ft_parser(char *input)
         ft_lstclear(&link);
         return (NULL);
     }
-    ft_set_args(link, command);
     command->redirection = NULL;
     if (!ft_check_redirections(link, &(command->redirection)))
     {
@@ -143,6 +140,9 @@ t_command *ft_parser(char *input)
         ft_lstclear(&link);
         return (NULL);
     }
+    command->args = NULL;
+    ft_set_args(link, &command);
     ft_lstclear(&link);
+    ft_free(split_input);
     return (command);
 }

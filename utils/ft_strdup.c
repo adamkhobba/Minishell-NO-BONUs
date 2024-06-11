@@ -6,11 +6,23 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:17:07 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 19:53:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:09:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int	ft_count_strs(char **s)
+{
+	int	counter;
+
+	counter = 0;
+	if (!s)
+		return (0);
+	while (s[counter])
+		counter++;
+	return (counter);
+}
 
 char	*ft_strdup(const char *s)
 {
@@ -19,10 +31,12 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	ptr = (char *)s;
 	put = (char *)malloc(ft_strlen(s) + 1);
 	if (put == NULL)
-		return (0);
+		return (NULL);
 	while (ptr[i])
 	{
 		put[i] = ptr[i];
@@ -34,7 +48,6 @@ char	*ft_strdup(const char *s)
 
 char	**ft_strdup_pro(char **ptr)
 {
-	char	**ptr;
 	char	**put;
 	int		size;
 	size_t	i;

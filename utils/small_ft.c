@@ -6,13 +6,13 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:16:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/08 19:56:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/11 11:37:44 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	*free_str(char **tab, int c)
+void	free_str(char **tab, int c)
 {
 	int	i;
 
@@ -82,7 +82,7 @@ char	**ft_strjoin_pro(char **s1, char **s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return (ft_strdup_pro(s2));
+		return (free_str(s1, ft_count_strs(s1)),ft_strdup_pro(s2));
 	if (!s2)
 		return (ft_strdup_pro(s1));
 	tmp = (char **)malloc(sizeof(char *) * (ft_count_strs(s1)

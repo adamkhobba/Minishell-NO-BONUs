@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
-/*   Updated: 2024/06/01 10:05:43 by adam             ###   ########.fr       */
+/*   Updated: 2024/06/11 10:11:18 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void ft_free(char **str)
     int i;
 
     i = 0;
+    if (!str)
+        return ;
     while (str[i])
     {
         free(str[i]);
