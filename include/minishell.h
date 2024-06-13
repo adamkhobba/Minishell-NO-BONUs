@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/11 10:39:03 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/12 00:41:21 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_command *ft_parser(char *input);
 t_link *ft_def_type(char **input);
 t_command *ft_check_command(t_link *link);
 int ft_check_redirections(t_link *link, t_redirection **redirectoin);
-void ft_set_args(t_link *link, t_command **command);
+t_command *ft_set_args(t_link *link, t_command *command);
 char	**ft_strjoin_pro(char **s1, char **s2);
 
 // error_ft

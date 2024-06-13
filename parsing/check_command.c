@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/11 23:41:14 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/12 00:39:44by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@
 //      return (NULL);
 // }
 
-void ft_set_args(t_link *link, t_command **command)
+
+t_command *ft_set_args(t_link *link, t_command *command)
 {
      t_link *tmp;
      int key;
+     char **ar;
 
      tmp = link;
      key = 0;
@@ -77,20 +79,15 @@ void ft_set_args(t_link *link, t_command **command)
           if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
                && tmp->identifer == STR)
           {
-               // if (tmp->command && !ft_strncmp(tmp->command, (*command)->command,
-               //      ft_strlen(tmp->command)))
-               // {
-               //      if (!key)
-               //           (*command)->args = ft_strjoin_pro((*command)->args, &tmp->command);
-               //      key = 1;
-               // }
-               // else if (tmp->command && ft_strncmp(tmp->command, (*command)->command,
-               //      ft_strlen(tmp->command)))
-                    (*command)->args = ft_strjoin_pro((*command)->args, &tmp->command);
+               ar = malloc(sizeof(char *) * 2);                    
+               ar[0] = ft_strdup(tmp->command);
+               ar[1] = NULL;
+               command->args = ft_strjoin_pro(command->args, ar);
+               free(ar);
           }
           tmp = tmp->next;
      }
-     (*command)->args = ft_strjoin_pro((*command)->args, NULL);
+     return (command);
 }
 
 t_command *ft_check_command(t_link *link)
