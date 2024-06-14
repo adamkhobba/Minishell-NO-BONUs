@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/14 00:37:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/14 12:06:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ t_command *ft_main_checker(t_link *link, t_command *command)
         return (NULL);
     command->args = NULL;
     command = ft_set_args(link, command);
-    check_pipes(command);
+    ft_check_pipes(link, &command);
     return (command);
 }
 
 t_command *ft_parser(char *input)
 {
     t_link *link;
-    t_error *error_node;
     t_command *command;
     char **split_input;
 

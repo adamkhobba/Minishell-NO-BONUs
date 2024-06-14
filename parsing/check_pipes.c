@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 00:14:54 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/14 00:34:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:30:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int ft_check_pipes(t_link *link, t_command **command)
         if (tmp->identifer == PIPE)
         {
             if (tmp->prev && tmp->next)
-                (*command) = ft_check_command(tmp->next); 
+                (*command) = ft_main_checker(tmp->next); 
             else 
             {
                 error_node = ft_lstnew_error(ERROR_PIPE);
