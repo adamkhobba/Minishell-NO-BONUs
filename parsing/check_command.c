@@ -76,8 +76,10 @@ t_command *ft_set_args(t_link *link, t_command *command)
      key = 0;
      while (tmp)
      {
-          if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
-               && tmp->identifer == STR)
+          if (command && tmp->identifer == PIPE)
+               return (command);
+          if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR ||
+               tmp->prev->identifer == PIPE))) && tmp->identifer == STR)
           {
                ar = malloc(sizeof(char *) * 2);                    
                ar[0] = ft_strdup(tmp->command);
@@ -90,26 +92,23 @@ t_command *ft_set_args(t_link *link, t_command *command)
      return (command);
 }
 
-t_command *ft_check_command(t_link *link)
+void ft_check_command(t_link *link, t_command **command)
 {
      t_link *tmp;
      t_command *node;
-     t_command *command;
 
      tmp = link;
-     command = NULL;
      while (tmp)
      {
           if (tmp && (!tmp->prev || (tmp->prev && tmp->prev->identifer == STR))
                && tmp->identifer == STR)
           {
                node = ft_lstnew_command(tmp->command); 
-               ft_lstadd_back_command(&command, node); 
-               return (command);
+               ft_lstadd_back_command(command, node); 
+               return ;
           }
-               tmp = tmp->next;
+          tmp = tmp->next;
      }
      node = ft_lstnew_command(NULL);
-     ft_lstadd_back_command(&command, node); 
-     return (command);
+     ft_lstadd_back_command(command, node); 
 }
