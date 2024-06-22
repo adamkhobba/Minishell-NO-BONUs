@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 00:14:54 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/21 11:28:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/22 19:04:28 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int ft_check_pipes(t_link *link, t_command **command)
 
     tmp = link;
     command_tmp = *command;
+    printf("---------------\n");
+    while (tmp)
+    {
+          printf("command:%s, id:%d\n", tmp->command, tmp->identifer);
+          tmp = tmp->next;
+    }
+    tmp = link;
     while (tmp)
     {
         if (tmp->identifer == PIPE)

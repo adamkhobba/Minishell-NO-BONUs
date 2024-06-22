@@ -99,7 +99,7 @@ void ft_check_command(t_link *link, t_command **command)
 
      tmp = link;
      while (tmp)
-     {
+     { 
           if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR ||
                tmp->prev->identifer == PIPE))) && tmp->identifer == STR)
           {
