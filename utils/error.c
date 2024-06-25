@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:16:10 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/04 17:02:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:25:00 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,28 @@ t_error *ft_lstnew_error(t_errorn num_error)
     node->next = NULL;
     node->error = num_error;
     return (node);
+}
+
+void	ft_lstdelone_error(t_error *lst)
+{
+	if (!lst)
+		return ;
+	free(lst);
+}
+
+void	ft_lstclear_error(t_error **lst)
+{
+	t_error *current;
+	t_error *twp;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		twp = current;
+		current = current->next;
+		ft_lstdelone_error(twp);
+	}
+	*lst = NULL;
 }

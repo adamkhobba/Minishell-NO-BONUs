@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 09:59:19 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:16:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void    ft_main_checker(t_link *link, t_command **command);
 // error_ft
 t_error *ft_lstnew_error(t_errorn num_error);
 void ft_lstadd_back_error(t_error **list, t_error *node);
+void	ft_lstclear_error(t_error **lst);
 
 // command_ft
 t_command *ft_lstnew_command(char *content);
@@ -108,7 +109,8 @@ void ft_free_command(t_command **command);
 
 //utils
 int	ft_count_strs(char **s);
-void ft_error();
+int	check_quote(char *str, int a);
+int ft_error();
 void	            free_str(char **tab, int c);
 int                 ft_strchr(int c, const char *s);
 void                ft_free(char **str);
