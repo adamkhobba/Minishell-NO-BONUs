@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/22 13:52:34 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:00:22 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    ft_main_checker(t_link *link, t_command **command)
     if (!command)
     {
         error_node = ft_lstnew_error(ERROR_COMMAND);
-        ft_lstadd_back_error(error, error_node);
+        ft_lstadd_back_error(&error, error_node);
         return ;
     }
     (*command)->redirection = NULL;
@@ -54,6 +54,7 @@ t_command *ft_parser(char *input)
     if (!command)
     {
         ft_free_command(&command);
+        printf("error\n");
         return (NULL);
     }
     ft_lstclear(&link);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/21 06:36:46 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 09:59:19 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_link
 }t_link;
 
 // var
-extern t_error **error;
+extern t_error *error;
 
 /*execution*/
 
@@ -108,6 +108,7 @@ void ft_free_command(t_command **command);
 
 //utils
 int	ft_count_strs(char **s);
+void ft_error();
 void	            free_str(char **tab, int c);
 int                 ft_strchr(int c, const char *s);
 void                ft_free(char **str);

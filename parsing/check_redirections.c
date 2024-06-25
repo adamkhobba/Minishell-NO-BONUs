@@ -29,7 +29,7 @@ int ft_check_less(t_link *link, t_redirection **file)
         else 
         {
             error_node = ft_lstnew_error(ERROR_LESS);
-            ft_lstadd_back_error(error, error_node);
+            ft_lstadd_back_error(&error, error_node);
             return (0);
         }
     }
@@ -53,7 +53,7 @@ int ft_check_lessless(t_link *link, t_redirection **file)
         else 
         {
             error_node = ft_lstnew_error(ERROR_LESSLESS);
-            ft_lstadd_back_error(error, error_node);
+            ft_lstadd_back_error(&error, error_node);
             return (0);
         }
     }
@@ -77,7 +77,7 @@ int ft_check_great(t_link *link, t_redirection **file)
         else 
         {
             error_node = ft_lstnew_error(ERROR_GREAT);
-            ft_lstadd_back_error(error, error_node);
+            ft_lstadd_back_error(&error, error_node);
             return (0);
         }
     }
@@ -101,7 +101,7 @@ int ft_check_greatgreat(t_link *link, t_redirection **file)
         else 
         {
             error_node = ft_lstnew_error(ERROR_GREATGREAT);
-            ft_lstadd_back_error(error, error_node);
+            ft_lstadd_back_error(&error, error_node);
             return (0);
         }
     }
@@ -119,7 +119,9 @@ int ft_check_redirections(t_link *link, t_redirection **redirectoin)
         if (tmp->identifer == PIPE)
             return (1);
         if (!ft_check_less(tmp, redirectoin))
+        {
             return (0);
+        }
         else if (!ft_check_great(tmp, redirectoin))
             return (0);
         else if (!ft_check_lessless(tmp, redirectoin))
