@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 09:57:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/09 22:08:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:33:11 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ void	ft_lstclear_redi(t_redirection **lst)
 	{
 		twp = current;
 		current = current->next;
-        if (twp->file)
-            free(twp->file);
+        free(twp->file);
 		ft_lstdelone_redi(twp);
-		
 	}
 	*lst = NULL;
 }

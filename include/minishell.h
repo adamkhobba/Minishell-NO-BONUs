@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 11:16:24 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:13:25 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void ft_lstclear_redi(t_redirection **list);
     // dbl link_ft
 void	ft_dbl_lstadd_back(t_link **lst, t_link *new);
 t_link	*ft_dbl_lstnew(void *content);
+void	ft_dbl_lstclear(t_link **lst);
 
 t_link				*ft_create_node(int nbr);
 t_link				*ft_create_node(int nbr);

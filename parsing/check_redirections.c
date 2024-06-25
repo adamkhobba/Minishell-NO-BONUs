@@ -119,9 +119,7 @@ int ft_check_redirections(t_link *link, t_redirection **redirectoin)
         if (tmp->identifer == PIPE)
             return (1);
         if (!ft_check_less(tmp, redirectoin))
-        {
             return (0);
-        }
         else if (!ft_check_great(tmp, redirectoin))
             return (0);
         else if (!ft_check_lessless(tmp, redirectoin))

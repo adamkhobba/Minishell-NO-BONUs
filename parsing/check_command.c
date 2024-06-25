@@ -85,7 +85,7 @@ t_command *ft_set_args(t_link *link, t_command *command)
                ar[0] = ft_strdup(tmp->command);
                ar[1] = NULL;
                command->args = ft_strjoin_pro(command->args, ar);
-               free(ar);
+               ft_free(ar);
           }
           tmp = tmp->next;
      }

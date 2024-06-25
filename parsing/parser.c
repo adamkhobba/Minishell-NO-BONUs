@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 10:20:21 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:12:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_command *ft_parser(char *input)
         ft_free_command(&command);
         return (NULL);
     }
-    ft_lstclear(&link);
+    ft_dbl_lstclear(&link);
     ft_free(split_input);
     return (command);
 }
