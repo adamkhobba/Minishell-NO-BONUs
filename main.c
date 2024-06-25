@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 10:28:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:49:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ int main() {
     while (1)
     {
         input = readline("minishell>");
-        if (input == NULL) {
-         printf("\nError reading input. Exiting...\n");
-            exit(EXIT_FAILURE);
-        }
+        if (input)
+            add_history(input);
         if (ft_strncmp(input, "exit", 4) == 0)
         {
             free(input);
