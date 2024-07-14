@@ -92,9 +92,7 @@ int ft_check_greatgreat(t_link *link, t_redirection **file)
     if (link->identifer == GREATGREAT)
     {
         if (link->next && link->next->identifer == STR)
-        {
-            node = ft_lstnew_redi(link->next->command);
-            node->identifer = GREATGREAT;
+        { node = ft_lstnew_redi(link->next->command); node->identifer = GREATGREAT;
             ft_lstadd_back_redi(file, node);
             return (1);
         }

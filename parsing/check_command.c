@@ -69,11 +69,9 @@
 t_command *ft_set_args(t_link *link, t_command *command)
 {
      t_link *tmp;
-     int key;
      char **ar;
 
      tmp = link;
-     key = 0;
      while (tmp)
      {
           if (command && tmp->identifer == PIPE)
