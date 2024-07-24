@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:36:47 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/24 10:53:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/24 18:46:14 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,26 @@ char    *ft_remove_quote(char *str, int start, int end)
 
 int ft_quote_handler(t_link **list)
 {
-    t_link **tmp;
+    t_link *tmp;
     long bin;
     int start;
     int end;
 
-    tmp = list;
-    while (*tmp)
+    tmp = *list;
+    while (tmp)
     {
-        bin = ft_index_quote((*tmp)->command);
+        bin = ft_index_quote((tmp)->command);
         if (!bin)
             return (0);
         if (bin == -1)
-            return (-1);
+        {
+            (tmp) = (tmp)->next;
+            continue ;
+        }
         start = bin >> 32;
         end = bin;
-        (*tmp)->command = ft_remove_quote((*tmp)->command, start, end);
-        (*tmp) = (*tmp)->next;
+        (tmp)->command = ft_remove_quote((tmp)->command, start, end);
+        (tmp) = (tmp)->next;
     }
     return (1);
 }
