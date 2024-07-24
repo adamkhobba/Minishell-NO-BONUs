@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 19:12:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/24 10:46:40 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@ void    ft_main_checker(t_link *link, t_command **command)
 {
     t_error *error_node;
 
-    // if (!ft_quote_handler(&link))
-    // {
-    //     error_node = ft_lstnew_error(ERROR_QUOTE);
-    //     ft_lstadd_back_error(error, error_node);
-    //     ft_lstclear(&link);
-    //     return (NULL);
-    // }
+    if (!ft_quote_handler(&link))
+    {
+        error_node = ft_lstnew_error(ERROR_QUOTE);
+        ft_lstadd_back_error(&error, error_node);
+        return ;
+    }
+    t_link *tmp = link;
+    while (tmp)
+    {
+        printf("command=%s\n", tmp->command);
+        tmp = tmp->next;
+    }
     if (!command)
     {
         error_node = ft_lstnew_error(ERROR_COMMAND);
@@ -49,6 +54,12 @@ t_command *ft_parser(char *input)
     command = NULL; 
     split_input = ft_lexer(input);
     link = ft_def_type(split_input);
+    // t_link *tmp = link;
+    // while (tmp)
+    // {
+    //     printf("command=%s\n", tmp->command);
+    //     tmp = tmp->next;
+    // }
     ft_check_command(link, &command);
     ft_main_checker(link, &command);
     if (!command)

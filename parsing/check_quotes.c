@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:36:47 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/14 19:23:21 by adam             ###   ########.fr       */
+/*   Updated: 2024/07/24 10:53:44 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,13 @@ long ft_index_quote(char *input)
     start = ft_strchr('\"', input);
     start_2 = ft_strchr('\'', input);
     if (!start && !start_2)
-        return (0);
+        return (-1);
     c = ft_char(start, start_2, '\"', '\'');
     start = ft_min(start, start_2);
-    end = ft_strchr(c, input + start);     
+    end = ft_strchr(c, input + start);
     start--;
     if (!end)
         return (0);
-    end--; 
     bin = start; 
     bin <<= 32;
     bin += end;
@@ -97,6 +96,8 @@ int ft_quote_handler(t_link **list)
         bin = ft_index_quote((*tmp)->command);
         if (!bin)
             return (0);
+        if (bin == -1)
+            return (-1);
         start = bin >> 32;
         end = bin;
         (*tmp)->command = ft_remove_quote((*tmp)->command, start, end);
