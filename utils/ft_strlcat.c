@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 20:39:30 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 11:58:22 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/25 12:22:55 by akhobba           #+#    #+#             */
+/*   Updated: 2024/07/25 12:23:29 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	ft_error(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_error	*tmp;
+	size_t	i;
+	size_t	j;
+	size_t	dlen;
+	size_t	slen;
 
-	tmp = g_error;
-	while (tmp)
+	i = 0;
+	slen = ft_strlen(src);
+	if (size == 0 || size <= ft_strlen(dst))
+		return (slen + size);
+	dlen = ft_strlen(dst);
+	j = dlen;
+	while (src[i] != '\0' && i < size - dlen - 1)
 	{
-		ft_putstr("minishell: ", 2);
-		if (tmp->error == ERROR_QUOTE)
-			ft_putstr("quote error\n", 2);
-		if (tmp->error == ERROR_COMMAND)
-			ft_putstr("command error\n", 2);
-		if (tmp->error == ERROR_PIPE)
-			ft_putstr("pipe error\n", 2);
-		if (tmp->error == ERROR_LESS)
-			ft_putstr("in redirection error\n", 2);
-		tmp = tmp->next;
+		dst[j] = src[i];
+		i++;
+		j++;
 	}
-
-	ft_lstclear_error(&g_error);
-	return (1);
+	dst[j] = '\0';
+	return (dlen + slen);
 }

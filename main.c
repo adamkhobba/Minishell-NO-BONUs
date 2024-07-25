@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:40:03 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 11:17:41 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:55:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(void)
 		if (!ft_error())
 			continue ;
 		tmp = command;
+		printf("command=%s\n", command->command);
 		while (tmp)
 		{
 			printf("command=%s\n", tmp->command);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 11:13:11 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 12:23:47 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,19 @@ typedef struct s_link
 	struct s_link			*next;
 }							t_link;
 
-// var
+// global var
 extern t_error				*g_error;
 
+// env linked list
+typedef struct env_store
+ {
+    char *key;
+    char *value;
+    struct env_store *next;
+} env_store;
+
 /*execution*/
+char	*getenv_value(char *key, env_store *env_list);
 
 /*Parsing*/
 
@@ -110,7 +119,13 @@ void						ft_lstadd_back_command(t_command **list,
 void						ft_lstclear_command(t_command **list);
 void						ft_free_command(t_command **command);
 
+// expand_ft
+int	ft_base_expand(t_link *link, env_store *env);
+
+
+
 // utils
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int							ft_count_strs(char **s);
 int							check_quote(char *str, int a);
 int							ft_error(void);
