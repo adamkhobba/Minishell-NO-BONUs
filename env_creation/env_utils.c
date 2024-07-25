@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
-/*   Updated: 2024/07/25 11:18:47 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/22 04:56:39 by hichokri          #+#    #+#             */
+/*   Updated: 2024/07/22 05:01:17 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_free(char **str)
+void	free_node(env_store *node)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	if (node->key)
+		free(node->key);
+	if (node->value)
+		free(node->value);
+	free(node);
 }

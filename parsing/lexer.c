@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:30:00 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/24 10:08:25 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:09:25 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	ft_count_spaces(char *input)
 	{
 		if (input[i] == '<' || input[i] == '>' || input[i] == '|')
 			count++;
-		if ( input[i + 1] && ((input[i] == '<' && input[i + 1] == '<')
-			|| (input[i] == '>' && input[i + 1] == '>')))
+		if (input[i + 1] && ((input[i] == '<' && input[i + 1] == '<')
+				|| (input[i] == '>' && input[i + 1] == '>')))
 			count--;
 		i++;
 	}
@@ -41,13 +41,14 @@ char	*ft_add_spaces(char *input, int j)
 	i = 0;
 	while (input[j])
 	{
-		if ((input[j] == '<'|| input[j] == '>'|| input[j] == '|') && !check_quote(input, j))
+		if ((input[j] == '<' || input[j] == '>' || input[j] == '|')
+			&& !check_quote(input, j))
 		{
 			tmp[i] = ' ';
 			tmp[++i] = input[j++];
-			if (input[j - 1] != '|' && (input[j] == '<'|| input[j] == '>'))
+			if (input[j - 1] != '|' && (input[j] == '<' || input[j] == '>'))
 			{
-				tmp [++i] = input[j++];
+				tmp[++i] = input[j++];
 			}
 			tmp[++i] = ' ';
 			i++;
@@ -61,8 +62,8 @@ char	*ft_add_spaces(char *input, int j)
 
 char	**ft_lexer(char *input)
 {
-	char **split_input;
-    char *input_spaces;
+	char	**split_input;
+	char	*input_spaces;
 
 	input_spaces = ft_add_spaces(input, 0);
 	split_input = ft_split(input_spaces, " \n\t\v\f\r");

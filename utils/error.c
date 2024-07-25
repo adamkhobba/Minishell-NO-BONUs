@@ -6,36 +6,37 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:16:10 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 10:25:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:20:21 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void ft_lstadd_back_error(t_error **list, t_error *node)
+void	ft_lstadd_back_error(t_error **list, t_error *node)
 {
-    t_error *tmp;
- 
-    if (!list)
-        return ;
-    if (!*list)
-    {
-        *list = node;
-        return ;
-    }
-    tmp = *list;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = node;
-}
-t_error *ft_lstnew_error(t_errorn num_error)
-{
-    t_error *node;
+	t_error	*tmp;
 
-    node = malloc(sizeof(t_error));
-    node->next = NULL;
-    node->error = num_error;
-    return (node);
+	if (!list)
+		return ;
+	if (!*list)
+	{
+		*list = node;
+		return ;
+	}
+	tmp = *list;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+}
+
+t_error	*ft_lstnew_error(t_errorn num_error)
+{
+	t_error	*node;
+
+	node = malloc(sizeof(t_error));
+	node->next = NULL;
+	node->error = num_error;
+	return (node);
 }
 
 void	ft_lstdelone_error(t_error *lst)
@@ -47,8 +48,8 @@ void	ft_lstdelone_error(t_error *lst)
 
 void	ft_lstclear_error(t_error **lst)
 {
-	t_error *current;
-	t_error *twp;
+	t_error	*current;
+	t_error	*twp;
 
 	if (!lst)
 		return ;

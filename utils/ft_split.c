@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 18:17:34 by adam              #+#    #+#             */
-/*   Updated: 2024/06/02 19:12:55by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/25 11:21:06 by akhobba           #+#    #+#             */
+/*   Updated: 2024/07/25 11:21:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ static int	count_words(char *str, char *charset)
 			i++;
 		if (str[i])
 			count++;
-		while (str[i] && (!ft_strchr(str[i], charset) ||
-			(ft_strchr(str[i], charset) && check_quote(str, i))))
+		while (str[i] && (!ft_strchr(str[i], charset) || (ft_strchr(str[i],
+						charset) && check_quote(str, i))))
 			i++;
 	}
 	return (count);
 }
 
-static	int	char_sep(char *str, char *charset)
+static int	char_sep(char *str, char *charset)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && (!ft_strchr(str[i], charset) ||
-		(ft_strchr(str[i], charset) && check_quote(str, i))))
+	while (str[i] && (!ft_strchr(str[i], charset) || (ft_strchr(str[i], charset)
+				&& check_quote(str, i))))
 		i++;
 	return (i);
 }
@@ -92,7 +92,7 @@ char	**ft_split(char *str, char *charset)
 {
 	char	**strings;
 	int		i;
-	int		j;	
+	int		j;
 	int		str_len;
 
 	i = 0;
@@ -108,8 +108,8 @@ char	**ft_split(char *str, char *charset)
 			strings[i] = ft_words(&str[j], charset);
 			i++;
 		}
-		while (str[j] && (!ft_strchr(str[j], charset) ||
-			(ft_strchr(str[j], charset) && check_quote(str, j))))
+		while (str[j] && (!ft_strchr(str[j], charset) || (ft_strchr(str[j],
+						charset) && check_quote(str, j))))
 			j++;
 	}
 	strings[i] = (void *)0;

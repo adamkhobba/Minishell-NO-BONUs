@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   get_env_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
-/*   Updated: 2024/07/25 11:18:47 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/22 04:57:31 by hichokri          #+#    #+#             */
+/*   Updated: 2024/07/22 05:01:21 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_free(char **str)
+char	*getenv_value(char *key, env_store *env_list)
 {
-	int	i;
+	env_store *tmp;
 
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
+	tmp = env_list;
+	while (tmp)
 	{
-		free(str[i]);
-		i++;
+		if (ft_strcmp(tmp->key, key) == 0)
+			return (tmp->value);
+		tmp = tmp->next;
 	}
-	free(str);
+	return (NULL);
 }

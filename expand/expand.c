@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
-/*   Updated: 2024/07/25 11:18:47 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/24 19:50:46 by akhobba           #+#    #+#             */
+/*   Updated: 2024/07/25 11:42:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_free(char **str)
+int	ft_base_expand(t_link *link, char **env)
 {
-	int	i;
+	t_link	*tmp;
 
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
+	tmp = link;
+	while (tmp)
 	{
-		free(str[i]);
-		i++;
 	}
-	free(str);
+	return (0);
 }

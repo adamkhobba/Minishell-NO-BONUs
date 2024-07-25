@@ -25,7 +25,6 @@ void	ft_lstclear(t_link **lst)
 		twp = current;
 		current = current->next;
 		ft_lstdelone(twp);
-		
 	}
 	*lst = NULL;
 }

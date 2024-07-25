@@ -6,39 +6,41 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:39:23 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 19:34:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:19:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void  ft_lstadd_back_command(t_command **list, t_command *node)
+void	ft_lstadd_back_command(t_command **list, t_command *node)
 {
-    t_command *tmp;
+	t_command	*tmp;
 
-    if (!list || !node)
-        return ;
-    if (!*list)
-    {
-        *list = node;
-        return ;
-    }
-    tmp = *list;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = node;
+	if (!list || !node)
+		return ;
+	if (!*list)
+	{
+		*list = node;
+		return ;
+	}
+	tmp = *list;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
 }
-t_command *ft_lstnew_command(char *content)
+
+t_command	*ft_lstnew_command(char *content)
 {
-    t_command *node;
+	t_command	*node;
 
-    node = malloc(sizeof(t_command));
-    if (node == NULL)
-        return (NULL);
-    node->command = ft_strdup(content);
-    node->next = NULL;
-    return (node);
+	node = malloc(sizeof(t_command));
+	if (node == NULL)
+		return (NULL);
+	node->command = ft_strdup(content);
+	node->next = NULL;
+	return (node);
 }
+
 void	ft_lstdelone_command(t_command *lst)
 {
 	if (!lst)
@@ -58,18 +60,19 @@ void	ft_lstclear_command(t_command **lst)
 	{
 		twp = current;
 		current = current->next;
-        if (twp->command)
-            free(twp->command);
+		if (twp->command)
+			free(twp->command);
 		ft_lstdelone_command(twp);
 	}
 	*lst = NULL;
 }
-void ft_free_command(t_command **command)
+
+void	ft_free_command(t_command **command)
 {
-   if (*command && (*command)->redirection)
-        ft_lstclear_redi(&((*command)->redirection));
-    if (*command && (*command)->args)
-        ft_free((*command)->args);
-    if (*command)
-        ft_lstclear_command(command);
+	if (*command && (*command)->redirection)
+		ft_lstclear_redi(&((*command)->redirection));
+	if (*command && (*command)->args)
+		ft_free((*command)->args);
+	if (*command)
+		ft_lstclear_command(command);
 }

@@ -12,31 +12,31 @@
 
 #include "../include/minishell.h"
 
-t_link *ft_def_type(char **input)
+t_link	*ft_def_type(char **input)
 {
-    t_link *link;
-    t_link *node;
-    int i;
+	t_link	*link;
+	t_link	*node;
+	int		i;
 
-    i = 0;
-    link = NULL;
-    while (input[i])
-    {
-        node = ft_dbl_lstnew(input[i]);
-        if (!ft_strncmp(input[i], "<", ft_strlen(input[i]))) 
-            node->identifer = LESS;
-        else if (!ft_strncmp(input[i], ">", ft_strlen(input[i]))) 
-            node->identifer = GREAT;
-        else if (!ft_strncmp(input[i], "<<", ft_strlen(input[i]))) 
-            node->identifer = LESSLESS;
-        else if (!ft_strncmp(input[i], ">>", ft_strlen(input[i]))) 
-            node->identifer = GREATGREAT;
-        else if (!ft_strncmp(input[i], "|", ft_strlen(input[i]))) 
-            node->identifer = PIPE;
-        else
-            node->identifer = STR;
-        ft_dbl_lstadd_back(&link, node);
-        i++;
-    } 
-    return (link);
-} 
+	i = 0;
+	link = NULL;
+	while (input[i])
+	{
+		node = ft_dbl_lstnew(input[i]);
+		if (!ft_strncmp(input[i], "<", ft_strlen(input[i])))
+			node->identifer = LESS;
+		else if (!ft_strncmp(input[i], ">", ft_strlen(input[i])))
+			node->identifer = GREAT;
+		else if (!ft_strncmp(input[i], "<<", ft_strlen(input[i])))
+			node->identifer = LESSLESS;
+		else if (!ft_strncmp(input[i], ">>", ft_strlen(input[i])))
+			node->identifer = GREATGREAT;
+		else if (!ft_strncmp(input[i], "|", ft_strlen(input[i])))
+			node->identifer = PIPE;
+		else
+			node->identifer = STR;
+		ft_dbl_lstadd_back(&link, node);
+		i++;
+	}
+	return (link);
+}

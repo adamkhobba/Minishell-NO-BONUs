@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 10:05:28 by adam              #+#    #+#             */
-/*   Updated: 2024/07/25 11:18:47 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/22 04:55:16 by hichokri          #+#    #+#             */
+/*   Updated: 2024/07/22 05:00:55 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_free(char **str)
+void	env(char **arg, env_store *env_list)
 {
-	int	i;
+	t_env_var *tmp;
 
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
+	if (arg[1])
 	{
-		free(str[i]);
-		i++;
+		write(2, "No such file or directory\n", 26);
 	}
-	free(str);
+	tmp = env_list;
+	while (tmp)
+	{
+		if (tmp->value)
+			ft_printf("%s=%s\n", tmp->key, tmp->value);
+		tmp = tmp->next;
+	}
 }

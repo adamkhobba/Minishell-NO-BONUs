@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 10:58:49 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/12 00:39:44by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/25 11:23:20 by akhobba           #+#    #+#             */
+/*   Updated: 2024/07/25 11:23:22 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 //           return (ft_strdup(command));
 //      else if (!ft_strncmp(command, "cd", ft_strlen(command)))
 //           return (ft_strdup(command));
-//      else 
+//      else
 //      {
 //           path = ft_check_command_path(command);
 //                return(path);
@@ -65,48 +65,49 @@
 //      return (NULL);
 // }
 
-
-t_command *ft_set_args(t_link *link, t_command *command)
+t_command	*ft_set_args(t_link *link, t_command *command)
 {
-     t_link *tmp;
-     char **ar;
+	t_link	*tmp;
+	char	**ar;
 
-     tmp = link;
-     while (tmp)
-     {
-          if (command && tmp->identifer == PIPE)
-               return (command);
-          if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR ||
-               tmp->prev->identifer == PIPE))) && tmp->identifer == STR)
-          {
-               ar = malloc(sizeof(char *) * 2);                    
-               ar[0] = ft_strdup(tmp->command);
-               ar[1] = NULL;
-               command->args = ft_strjoin_pro(command->args, ar);
-               ft_free(ar);
-          }
-          tmp = tmp->next;
-     }
-     return (command);
+	tmp = link;
+	while (tmp)
+	{
+		if (command && tmp->identifer == PIPE)
+			return (command);
+		if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR
+						|| tmp->prev->identifer == PIPE)))
+			&& tmp->identifer == STR)
+		{
+			ar = malloc(sizeof(char *) * 2);
+			ar[0] = ft_strdup(tmp->command);
+			ar[1] = NULL;
+			command->args = ft_strjoin_pro(command->args, ar);
+			ft_free(ar);
+		}
+		tmp = tmp->next;
+	}
+	return (command);
 }
 
-void ft_check_command(t_link *link, t_command **command)
+void	ft_check_command(t_link *link, t_command **command)
 {
-     t_link *tmp;
-     t_command *node;
+	t_link		*tmp;
+	t_command	*node;
 
-     tmp = link;
-     while (tmp)
-     { 
-          if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR ||
-               tmp->prev->identifer == PIPE))) && tmp->identifer == STR)
-          {
-               node = ft_lstnew_command(tmp->command); 
-               ft_lstadd_back_command(command, node); 
-               return ;
-          }
-          tmp = tmp->next;
-     }
-     node = ft_lstnew_command(NULL);
-     ft_lstadd_back_command(command, node); 
+	tmp = link;
+	while (tmp)
+	{
+		if (tmp && (!tmp->prev || (tmp->prev && (tmp->prev->identifer == STR
+						|| tmp->prev->identifer == PIPE)))
+			&& tmp->identifer == STR)
+		{
+			node = ft_lstnew_command(tmp->command);
+			ft_lstadd_back_command(command, node);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+	node = ft_lstnew_command(NULL);
+	ft_lstadd_back_command(command, node);
 }

@@ -82,7 +82,7 @@ char	**ft_strjoin_pro(char **s1, char **s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return (free_str(s1, ft_count_strs(s1)),ft_strdup_pro(s2));
+		return (free_str(s1, ft_count_strs(s1)), ft_strdup_pro(s2));
 	if (!s2)
 		return (ft_strdup_pro(s1));
 	tmp = (char **)malloc(sizeof(char *) * (ft_count_strs(s1)

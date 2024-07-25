@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:22:35 by akhobba           #+#    #+#             */
-/*   Updated: 2024/06/25 19:15:41 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:23:03 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_dbl_lstclear(t_link **lst)
 		current = current->next;
 		if (twp->command)
 			free(twp->command);
-		if(twp)
+		if (twp)
 			free(twp);
 	}
 	*lst = NULL;
