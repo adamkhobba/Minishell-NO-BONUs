@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 12:23:47 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/26 20:21:06 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ typedef struct env_store
 
 /*execution*/
 char	*getenv_value(char *key, env_store *env_list);
+env_store	*env_node(char *key, char *value);
+void	env_var_add(char **envp, int i, env_store **head);
+void	free_node(env_store *node);
 
 /*Parsing*/
 
@@ -120,8 +123,7 @@ void						ft_lstclear_command(t_command **list);
 void						ft_free_command(t_command **command);
 
 // expand_ft
-int	ft_base_expand(t_link *link, env_store *env);
-
+int	ft_base_expand(t_link **link, env_store *env);
 
 
 // utils

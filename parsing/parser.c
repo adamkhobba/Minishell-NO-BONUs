@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:11:52 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 11:55:08 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/26 20:10:03 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_command	*ft_parser(char *input)
 	//     ft_lstadd_back_error(&g_error, error_node);
 	//     return (NULL);
 	// }
+	// ft_base_expand(&link, env);
 	ft_check_command(link, &command);
 	ft_main_checker(link, &command);
 	if (!command)

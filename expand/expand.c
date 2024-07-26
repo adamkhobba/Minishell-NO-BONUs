@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:50:46 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/25 12:37:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/07/26 20:18:50 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char *ft_change_key(char *command, int position, env_store *env)
 {
-	t_link *tmp;
 	char *output;
 	char *value;
 
@@ -25,9 +24,9 @@ char *ft_change_key(char *command, int position, env_store *env)
 		ft_strlen(value) + ft_strlen(command + position + 1) + 1));
 	if (!output)
 		return (NULL);
-	output = ft_strlcpy(output, command, position);
-	output = ft_strlcat(output, value, position + ft_strlen(value));
-	output = ft_strlcat(output, command + position + 1,
+	ft_strlcpy(output, command, position);
+	ft_strlcat(output, value, position + ft_strlen(value));
+	ft_strlcat(output, command + position + 1,
 	position + ft_strlen(value) + ft_strlen(command + position + 1));
 	return (0);
 }
@@ -41,14 +40,15 @@ int	ft_base_expand(t_link **link, env_store *env)
 	position = -1;
 	while (tmp)
 	{
-		position = ft_strchr(tmp->command, '$');
+		position = ft_strchr('$', tmp->command);
 		if (position != -1)
 		{
 			tmp = tmp->next;
 			continue;
-		}
+	}
 		tmp->command = ft_change_key(tmp->command, position, env);
 		tmp = tmp->next;
 	}
 	return (0);
 }
+
