@@ -45,10 +45,9 @@ int	ft_base_expand(t_link **link, env_store *env)
 		{
 			tmp = tmp->next;
 			continue;
-	}
+		}
 		tmp->command = ft_change_key(tmp->command, position, env);
 		tmp = tmp->next;
 	}
 	return (0);
 }
-

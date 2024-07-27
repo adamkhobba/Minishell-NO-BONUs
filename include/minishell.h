@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:19:40 by akhobba           #+#    #+#             */
-/*   Updated: 2024/07/26 20:21:06 by adam             ###   ########.fr       */
+/*   Updated: 2024/07/27 08:57:49 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,13 @@ typedef struct env_store
     struct env_store *next;
 } env_store;
 
-/*execution*/
+/*Execution*/
 char	*getenv_value(char *key, env_store *env_list);
 env_store	*env_node(char *key, char *value);
 void	env_var_add(char **envp, int i, env_store **head);
 void	free_node(env_store *node);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 /*Parsing*/
 
@@ -128,6 +130,7 @@ int	ft_base_expand(t_link **link, env_store *env);
 
 // utils
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char	*ft_strchr_v2(const char *s, int c);
 int							ft_count_strs(char **s);
 int							check_quote(char *str, int a);
 int							ft_error(void);

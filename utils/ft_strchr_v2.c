@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env_value.c                                    :+:      :+:    :+:   */
+/*   ft_strchr_v2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 04:57:31 by hichokri          #+#    #+#             */
-/*   Updated: 2024/07/27 08:59:40 by akhobba          ###   ########.fr       */
+/*   Created: 2024/07/27 08:56:59 by akhobba           #+#    #+#             */
+/*   Updated: 2024/07/27 08:57:34 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*getenv_value(char *key, env_store *env_list)
+char	*ft_strchr_v2(const char *s, int c)
 {
-	env_store *tmp;
+	int	i;
 
-	tmp = env_list;
-	while (tmp)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (ft_strncmp(tmp->key, key, ft_strlen(key)) == 0)
-			return (tmp->value);
-		tmp = tmp->next;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_env_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 04:58:12 by hichokri          #+#    #+#             */
-/*   Updated: 2024/07/22 06:20:38 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/07/27 10:16:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ env_store	*env_node(char *key, char *value)
 	return (env_node);
 }
 
+// This function should be reformed 
+
 void	env_var_add(char **envp, int i, env_store **head)
 {
 	char		*key;
@@ -34,17 +36,18 @@ void	env_var_add(char **envp, int i, env_store **head)
 	env_store	*tmp;
 
 	tmp = *head;
-	path = ft_strchr(envp[i], '=');
+	path = ft_strchr_v2(envp[i], '=');
 	if (path)
 	{
 		key = ft_substr(envp[i], 0, path - envp[i]);
 		value = ft_strdup(path + 1);
 		while (tmp)
 		{
-			if (ft_strcmp(tmp->key, key) == 0)
+			if (ft_strncmp(tmp->key, key, ft_strlen(key)) == 0)
 			{
 				new_node = env_node(key, NULL);
 				free(value);
+				free(key);
 			}
 			tmp = tmp->next;
 		}
