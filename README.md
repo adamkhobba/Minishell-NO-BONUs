@@ -1,3 +1,2 @@
 # minishell
-> Thanks to Minishell, you’ll be able to travel through time and come back to problems
-people faced when Windows didn’t exist. 
+> Let me explain, this is the parsing of minishell without bonus, I stopped in parsing because a decide to do minishell with parsing.
